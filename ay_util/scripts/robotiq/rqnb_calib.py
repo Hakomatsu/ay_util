@@ -11,9 +11,9 @@ from ay_py.ros.rbt_rq import TRobotiq
 if __name__=='__main__':
   rospy.init_node('robotiq_calib')
   rq= TRobotiq()
-  print 'Calibrating...'
+  print('Calibrating...')
   rq.Init()
   rospy.sleep(2.0)
   rq.Open(blocking=True)
-  print 'Done.'
+  print('Done.')
   rq.Cleanup()

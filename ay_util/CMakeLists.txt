@@ -20,7 +20,7 @@ include_directories(
   )
 
 add_executable(state_validity_checker_node
-  src_ros/state_validity_checker_node.cpp
+  src/state_validity_checker_node.cpp
   )
 target_link_libraries(state_validity_checker_node
   ${catkin_LIBRARIES}

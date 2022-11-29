@@ -57,6 +57,6 @@ if __name__=='__main__':
   gripper_type= sys.argv[2] if len(sys.argv)>2 else 'DxlGripper'
   finger_type= sys.argv[3] if len(sys.argv)>3 else None
   command= 'Reboot'
-  print 'args=',sys.argv
+  print('args=',sys.argv)
   OperateDxlGripper(dev, gripper_type, finger_type, command)
 

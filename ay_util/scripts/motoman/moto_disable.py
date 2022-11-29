@@ -13,5 +13,5 @@ if __name__=='__main__':
   rospy.wait_for_service('/robot_disable')
   srvp= rospy.ServiceProxy('/robot_disable', std_srvs.srv.Trigger)
   res= srvp()
-  print 'Ok' if res.success else 'Failed'
-  print res.message
+  print('Ok' if res.success else 'Failed')
+  print(res.message)

@@ -36,7 +36,7 @@ if __name__=='__main__':
       raw= ser.readline()
       header.stamp= rospy.Time.now()
       if (header.stamp-t_start).to_sec()<10.0:
-        print '(displayed only first 10sec) "{raw}" ({l})'.format(raw=repr(raw), l=len(raw))
+        print('(displayed only first 10sec) "{raw}" ({l})'.format(raw=repr(raw), l=len(raw)))
       if len(raw)!=17:  continue
       value= float(raw[3:12])
 

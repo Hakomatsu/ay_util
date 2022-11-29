@@ -26,7 +26,7 @@ try:
   import ur_msgs.msg
   import ur_msgs.srv
 except Exception as e:
-  print e
+  print(e)
 from proc_manager import TSubProcManager
 
 class TProcessManagerUR(QtCore.QObject, TSubProcManager):
@@ -201,7 +201,7 @@ class TProcessManagerUR(QtCore.QObject, TSubProcManager):
       threads[service].start()
     threads['srvp_ur_set_io']= threading.Thread(name='srvp_ur_set_io', target=lambda:(setattr(self,'srvp_ur_set_io',SetupServiceProxy('/ur_hardware_interface/set_io', ur_msgs.srv.SetIO, persistent=False, time_out=timeout))))
     threads['srvp_ur_set_io'].start()
-    for name,th in threads.iteritems():  th.join()
+    for name,th in threads.items():  th.join()
 
     #Connect to io_states to publish a fake io_states for debug.
     self.pub_io_states= rospy.Publisher('/ur_hardware_interface/io_states', ur_msgs.msg.IOStates, queue_size=10)
@@ -298,7 +298,7 @@ class TProcessManagerUR(QtCore.QObject, TSubProcManager):
     while self.ur_robot_mode != mode:
       rate.sleep()
       if (rospy.Time.now()-t_start).to_sec()>timeout:
-        print 'WaitForRobotMode timeout.'
+        print('WaitForRobotMode timeout.')
         return False
     #print '  done.',mode,self.ur_robot_mode
     return True
@@ -310,7 +310,7 @@ class TProcessManagerUR(QtCore.QObject, TSubProcManager):
     while self.ur_safety_mode != mode:
       rate.sleep()
       if (rospy.Time.now()-t_start).to_sec()>timeout:
-        print 'WaitForSafetyMode timeout.'
+        print('WaitForSafetyMode timeout.')
         return False
     return True
 
@@ -321,7 +321,7 @@ class TProcessManagerUR(QtCore.QObject, TSubProcManager):
     while self.ur_program_running != program_running:
       rate.sleep()
       if (rospy.Time.now()-t_start).to_sec()>timeout:
-        print 'WaitForProgramRunning timeout.'
+        print('WaitForProgramRunning timeout.')
         return False
     return True
 
@@ -332,7 +332,7 @@ class TProcessManagerUR(QtCore.QObject, TSubProcManager):
     while self.ur_ros_running != ur_ros_running:
       rate.sleep()
       if (rospy.Time.now()-t_start).to_sec()>timeout:
-        print 'WaitForURROSRunning timeout.'
+        print('WaitForURROSRunning timeout.')
         return False
     return True
 
@@ -377,7 +377,7 @@ class TProcessManagerUR(QtCore.QObject, TSubProcManager):
       return
     self.srvp_wait_finish()  #Wait for previously executed scripts.
     self.pub_cmd.publish(std_msgs.msg.String(cmd))
-    print '###DEBUG/RunFGScript###',cmd
+    print('###DEBUG/RunFGScript###',cmd)
     self.srvp_wait_finish()
 
   def RunBGScript(self, cmd):
@@ -386,7 +386,7 @@ class TProcessManagerUR(QtCore.QObject, TSubProcManager):
       return
     self.srvp_wait_finish()  #Wait for previously executed scripts.
     self.pub_cmd.publish(std_msgs.msg.String(cmd))
-    print '###DEBUG/RunBGScript###',cmd
+    print('###DEBUG/RunBGScript###',cmd)
 
   def SendString(self, key):
     if not hasattr(self,'connected_to_script_node'):
@@ -429,7 +429,7 @@ class TProcessManagerUR(QtCore.QObject, TSubProcManager):
     while self.script_node_status != status:
       rate.sleep()
       if (rospy.Time.now()-t_start).to_sec()>timeout:
-        print 'WaitForScriptNodeStatus timeout.'
+        print('WaitForScriptNodeStatus timeout.')
         return False
     return True
 
@@ -682,7 +682,7 @@ MainProgram: {script_status}'''.format(
 
   #Since the onstatuschanged signal is emitted from TProcessManager,
   #we connect the onstatuschanged slots of panel to it.
-  for w_name, (w_type, w_param) in panel.widgets_in.iteritems():
+  for w_name, (w_type, w_param) in panel.widgets_in.items():
     if 'onstatuschanged' in w_param and w_param['onstatuschanged'] is not None:
       pm.onstatuschanged.connect(lambda status,w_param=w_param,w_name=w_name: w_param['onstatuschanged'](panel,panel.widgets[w_name],status))
 

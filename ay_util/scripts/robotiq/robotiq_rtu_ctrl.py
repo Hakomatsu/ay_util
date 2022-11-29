@@ -26,7 +26,7 @@ def MainLoop(device, node_name, timeout):
   #timeout= 0.005  #0.2
   gripper.client.client= ModbusSerialClient(method='rtu',port=device,stopbits=1, bytesize=8, baudrate=115200, timeout=timeout)
   if not gripper.client.client.connect():
-      print "Unable to connect to %s" % device
+      print("Unable to connect to %s" % device)
 
   rospy.init_node(node_name)
   #Topic of gripper status

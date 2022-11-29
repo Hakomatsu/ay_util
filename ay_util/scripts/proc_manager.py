@@ -23,7 +23,7 @@ class TSubProcManager(object):
 
   def TerminateBGProcess(self, name):
     if name not in self.procs:
-      print 'No process named',name
+      print('No process named',name)
       return
     self.procs[name].terminate()
     self.procs[name].wait()
@@ -34,8 +34,8 @@ class TSubProcManager(object):
     del self.procs[name]
 
   def TerminateAllBGProcesses(self):
-    for name,p in self.procs.iteritems():
-      print 'Terminating',name
+    for name,p in self.procs.items():
+      print('Terminating',name)
       p.terminate()
       p.wait()
       #TODO: wait(): It is safer to have timeout.  For ver<3.3, implement like:
@@ -47,7 +47,7 @@ class TSubProcManager(object):
   #WARNING: This is not safe.  When killing roscore, rosmaster is still alive.
   def KillBGProcess(self, name):
     if name not in self.procs:
-      print 'No process named',name
+      print('No process named',name)
       return
     self.procs[name].kill()
     self.procs[name].wait()

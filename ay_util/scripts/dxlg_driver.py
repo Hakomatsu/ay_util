@@ -58,7 +58,7 @@ class TDxlGripperDriver(object):
 
     self.js= None
 
-    print 'Initializing and activating {gripper_type}({finger_type}) gripper...'.format(gripper_type=self.gripper_type,finger_type=finger_type)
+    print('Initializing and activating {gripper_type}({finger_type}) gripper...'.format(gripper_type=self.gripper_type,finger_type=finger_type))
     if not self.gripper.Init():
       raise Exception('Failed to setup {gripper_type}({finger_type}) gripper.'.format(gripper_type=self.gripper_type,finger_type=finger_type))
     self.gripper.StartStateObs(self.JointStatesCallback)
@@ -75,7 +75,7 @@ class TDxlGripperDriver(object):
     self.Cleanup()
 
   def Cleanup(self):
-    print 'Cleanup'
+    print('Cleanup')
     self.gripper.StopMoveTh()
     self.gripper.StopStateObs()
     self.gripper.Cleanup()
@@ -128,7 +128,7 @@ class TDxlGripperDriver(object):
     else:
       res.success= False
       res.message= 'Unknown command: {cmd}'.format(cmd=req.command)
-      print res.message
+      print(res.message)
     return res
 
   # Handler of dxl_io service (ay_util_msgs/DxlIO).
@@ -162,6 +162,6 @@ if __name__=='__main__':
   dev= sys.argv[1] if len(sys.argv)>1 else '/dev/ttyUSB0'
   gripper_type= sys.argv[2] if len(sys.argv)>2 else 'DxlGripper'
   finger_type= sys.argv[3] if len(sys.argv)>3 else None
-  print 'args=',sys.argv
+  print('args=',sys.argv)
   robot= TDxlGripperDriver(dev, gripper_type, finger_type)
   #rospy.spin()
