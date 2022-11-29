@@ -1,0 +1,22 @@
+<package>
+  <name>ay_util</name>
+  <version>0.0.1</version>
+  <description>ay_util</description>
+  <author>Akihiko Yamaguchi</author>
+  <maintainer email="user@todo.todo">user</maintainer>
+  <license>Described in LICENSE</license>
+  <url>http://akihikoy.net</url>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>ay_util_msgs</build_depend>
+  <build_depend>eigen_conversions</build_depend>
+  <build_depend>moveit_core</build_depend>
+  <build_depend>moveit_ros_planning_interface</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>ay_util_msgs</run_depend>
+  <run_depend>eigen_conversions</run_depend>
+  <run_depend>moveit_core</run_depend>
+  <run_depend>moveit_ros_planning_interface</run_depend>
+
+</package>
